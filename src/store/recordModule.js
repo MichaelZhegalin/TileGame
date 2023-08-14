@@ -16,6 +16,7 @@ export const recordModule = {
                     id: Date.now()
                 }
             )
+            localStorage.setItem('records', JSON.stringify(state.usersRecord));
             if(state.recordListShow.length < 3){
                 state.recordListShow.push(
                     {
@@ -30,7 +31,10 @@ export const recordModule = {
         },
         setAllUsersRecord(state, allUsersInfo){
             for(let i in allUsersInfo){
-                state.usersRecord[i] = allUsersInfo[i]
+                state.usersRecord[i] = allUsersInfo[i];
+                if(i < 3){
+                    state.recordListShow[i] = allUsersInfo[i];
+                }
             }
         },
         setRecordListShow(state, numberCarousel){
@@ -48,6 +52,11 @@ export const recordModule = {
             for(let i = 0; i < stopNum; i++){
                 state.recordListShow[i] = state.usersRecord[numberCarousel * 3 + i];
             }
+        },
+        clearRecord(state){
+            state.usersRecord = [];
+            state.recordListShow = [];
+            localStorage.clear();
         }
     },
     actions: {

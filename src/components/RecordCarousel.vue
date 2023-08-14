@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <btns-for-carousel :carouselCounter="carouselCounter" @rigthSlide="rigthSlide" @leftSlide="leftSlide"></btns-for-carousel>
+        <btns-for-carousel></btns-for-carousel>
     </div>
     
   </template>
@@ -26,23 +26,6 @@ import CardRecord from './CardRecord.vue';
 import BtnsForCarousel from './BtnsForCarousel.vue';
 export default {
   components: { CardRecord, BtnsForCarousel },
-
-    data() {
-        return {
-            carouselCounter: 0,
-        }
-    },
-
-    methods: {
-        rigthSlide(){
-            this.carouselCounter += 1;
-            this.$store.commit('setRecordListShow', this.carouselCounter);
-        },
-        leftSlide(){
-            this.carouselCounter -= 1;
-            this.$store.commit('setRecordListShow', this.carouselCounter);
-        }
-    }
 
 }
 </script>

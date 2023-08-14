@@ -17,5 +17,9 @@ export default {
   data: () => ({
     //
   }),
+
+  mounted(){
+    this.$store.commit('setAllUsersRecord', JSON.parse(localStorage.getItem('records')))
+  }
 }
 </script>
