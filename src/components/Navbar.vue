@@ -16,7 +16,6 @@ export default {
     methods: {
         goToRecord(){
             this.$router.push('/recordUsers');
-            this.$store.commit('clearTilesAndActiveId');
             this.$store.commit('setNewGame');
             this.$store.commit('setDefault');
             console.log( this.$store.state.userInfo.hardLvl)

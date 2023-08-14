@@ -1,16 +1,11 @@
 <template>
-    <div v-for="userRecord in $store.state.record.usersRecord" :key="userRecord.id">
-        <ul>
-            <li>Имя: {{ userRecord.name }}</li>
-            <li>Сложность: {{ userRecord.hardLvl }}</li>
-            <li>Скорость: {{ userRecord.speedLvl }}</li>
-            <li>Счет: {{ userRecord.score }}</li>
-        </ul>
-    </div>
+    <record-carousel></record-carousel>
 </template>
 
 <script>
+import RecordCarousel from '@/components/RecordCarousel.vue'
 export default {
+    components: {RecordCarousel}
 
 }
 </script>

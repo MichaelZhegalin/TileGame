@@ -9,8 +9,8 @@ export const tilesInfoModule = {
     },
     mutations: {
         setField(state, tilesNumber){
-            state.tiles.length = 0;
-            state.activeId.length = 0;
+            state.tiles = [];
+            state.activeId = [];
             state.gameOver = false;
             state.nextLvl = false;
             for(let i = 0; i < tilesNumber; i++){

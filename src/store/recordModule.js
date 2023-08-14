@@ -1,6 +1,7 @@
 export const recordModule = {
     state: () => ({
-        usersRecord: []
+        usersRecord: [],
+        recordListShow: []
     }),
     getters: {
     },
@@ -15,10 +16,37 @@ export const recordModule = {
                     id: Date.now()
                 }
             )
+            if(state.recordListShow.length < 3){
+                state.recordListShow.push(
+                    {
+                        name: userInfo.name,
+                        hardLvl: userInfo.hard,
+                        speedLvl: userInfo.speed,
+                        score: userInfo.score,
+                        id: Date.now()
+                    }
+                )
+            }
         },
         setAllUsersRecord(state, allUsersInfo){
             for(let i in allUsersInfo){
                 state.usersRecord[i] = allUsersInfo[i]
+            }
+        },
+        setRecordListShow(state, numberCarousel){
+            let stopNum = undefined;
+            for(let i = 0; i < 3; i++){
+                if(state.usersRecord[numberCarousel * 3 + i] !== undefined){
+                    state.recordListShow[i] = state.usersRecord[numberCarousel * 3 + i];
+                }else{
+                    stopNum = i;
+                    i = 3;
+                    state.recordListShow = []; 
+                }
+                
+            }
+            for(let i = 0; i < stopNum; i++){
+                state.recordListShow[i] = state.usersRecord[numberCarousel * 3 + i];
             }
         }
     },
