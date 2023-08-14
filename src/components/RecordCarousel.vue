@@ -2,38 +2,30 @@
     <div style="width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
         <div class="carousel">
             <div class="container" style=" margin-bottom: 35px;">
-                <div class="row">
-                <transition-group name="record-list">
-                    <div class="col record-list-item" :key="item.id" v-for="item in $store.state.record.recordListShow">
-                        <v-card>
-                            <ul>
-                                <li>Имя: {{ item.name }}</li>
-                                <li>Сложность: {{ item.hardLvl }}</li>
-                                <li>Скорость: {{ item.speedLvl }}</li>
-                                <li>Счет: {{ item.score }}</li>
-                            </ul>
-                        </v-card>
-                    </div>
-                </transition-group>
+                <div class="row" v-if="$store.state.record.recordListShow.length !== 0">
+                    <transition-group name="record-list">
+                        <div class="col record-list-item" :key="item.id" v-for="item in $store.state.record.recordListShow">
+                            <card-record :item="item"></card-record>
+                        </div>
+                    </transition-group>
+                </div>
+                <div v-else style="display: flex; justify-content: center;">
+                    <v-card style="max-width: 20rem;">
+                        <v-card-title style="text-align: center;">Пока нет рекордов :(</v-card-title>
+                    </v-card>
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row" style="display: flex; justify-content: space-between;">
-                <div class="col" style="display: flex; justify-content: flex-start">
-                    <v-btn @click="leftSlide" v-if="carouselCounter > 0">Влево</v-btn>
-                </div>
-                <div class="col" style="display: flex; justify-content: flex-end">
-                    <v-btn @click="rigthSlide" v-if="$store.state.record.usersRecord.length - carouselCounter*3 > 3">Вправо</v-btn>
-                </div>           
-            </div>
-        </div>
+        <btns-for-carousel :carouselCounter="carouselCounter" @rigthSlide="rigthSlide" @leftSlide="leftSlide"></btns-for-carousel>
     </div>
     
   </template>
 
 <script>
+import CardRecord from './CardRecord.vue';
+import BtnsForCarousel from './BtnsForCarousel.vue';
 export default {
+  components: { CardRecord, BtnsForCarousel },
 
     data() {
         return {
@@ -71,5 +63,21 @@ export default {
 
 .record-list-leave-active {
   position: absolute;
+}
+
+.slide-fade-left-enter-active {
+    transition: all 0.5s ease-out;
+}
+.slide-fade-left-enter-from {
+    transform: translateX(-40px);
+    opacity: 0;
+}
+
+.slide-fade-rigth-enter-active {
+    transition: all 0.5s ease-out;
+}
+.slide-fade-rigth-enter-from {
+    transform: translateX(40px);
+    opacity: 0;
 }
 </style>
