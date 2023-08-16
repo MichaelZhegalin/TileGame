@@ -40,10 +40,10 @@ export default {
 <style scoped>
 
 .card{
-    transition: 250ms ease;
     position: relative; 
     height: 40vh; 
-    width: 24vw;
+    max-width: 22rem;
+    min-width: 8rem;
     display: flex; 
     flex-direction: column; 
     justify-content: space-between;
@@ -53,8 +53,7 @@ export default {
 }
 
 .card:hover{
-    transition: 250ms ease;
-    width: 25vw;
+    border: solid green 2px;
 }
 
 .card__hidden{

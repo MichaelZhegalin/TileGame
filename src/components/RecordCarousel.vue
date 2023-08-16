@@ -1,8 +1,8 @@
 <template>
-    <div style="width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <div style="width: 100%; ">
         <div class="carousel">
-            <div class="container" style=" margin-bottom: 35px;">
-                <div class="row" v-if="$store.state.record.recordListShow.length !== 0">
+            <div class="container" style="margin-bottom: 35px;">
+                <div class="row" v-if="$store.state.record.recordListShow.length !== 0" style="max-height: 30rem; overflow-y: auto; overflow-x: hidden;">
                     <transition-group name="record-list">
                         <div class="col record-list-item" :key="item.id" v-for="item in $store.state.record.recordListShow">
                             <card-record :item="item"></card-record>

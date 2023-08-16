@@ -8,11 +8,6 @@
                     </v-btn>
                 </transition>
             </div>
-            <div class="col btns__col-center">
-                <transition name="fade">
-                    <v-btn color="danger" size="large" @click="() => showModal = true" v-if="$store.state.record.recordListShow.length !== 0">Отчистить таблицу рекордов</v-btn>
-                </transition>
-            </div>
             <div class="col btns__col-end">
                 <transition name="slide-fade-rigth">
                     <v-btn size="x-large" icon @click="rigthSlide" v-if="$store.state.record.usersRecord.length - carouselCounter*3 > 3">
@@ -20,6 +15,13 @@
                     </v-btn>
                 </transition>
             </div>           
+        </div>
+        <div class="row">
+            <div class="col btns__col-center">
+                <transition name="fade">
+                    <v-btn color="danger" size="large" @click="() => showModal = true" v-if="$store.state.record.recordListShow.length !== 0">Отчистить таблицу рекордов</v-btn>
+                </transition>
+            </div>
         </div>
     </div>
     <modal-clear-record 
@@ -67,6 +69,7 @@ export default {
 .btns__row{
     display: flex; 
     justify-content: space-between;
+    margin-bottom: 15px;
 }
 
 .btns__col-start{

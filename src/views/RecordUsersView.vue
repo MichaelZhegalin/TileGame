@@ -1,5 +1,7 @@
 <template>
-    <record-carousel></record-carousel>
+    <div style="height: 92%; display: flex; justify-content: center; align-items: center;">
+        <record-carousel></record-carousel>
+    </div> 
 </template>
 
 <script>
